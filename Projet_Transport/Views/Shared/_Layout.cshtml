@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Projet_Transport</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Sailor Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/SocieteZ/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/owl.carousel/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/SocieteZ/css/style.css" rel="stylesheet">
+    <link href="~/SocieteZ/css/site.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo"><a href="index.html">Transport Maroc</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav class="nav-menu d-none d-lg-block">
+
+                <ul>
+                    <li><a href="">Accueil</a></li>
+                    <li><a href="/Societe/listTrajet">Trajet</a></li>
+                    <li><a href="/Car/listcar">Car</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+                </ul>
+
+            </nav><!-- .nav-menu -->
+
+            <a href="index.html" class="get-started-btn ml-auto">
+                Get Started
+            </a>
+
+        </div>
+    </header><!-- End Header -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/SocieteZ/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/SocieteZ/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/SocieteZ/js/site.js" asp-append-version="true"></script>
+    <script src="~/SocieteZ/vendor/jquery/jquery.min.js"></script>
+    <script src="~/SocieteZ/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/SocieteZ/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/SocieteZ/vendor/php-email-form/validate.js"></script>
+    <script src="~/SocieteZ/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/SocieteZ/vendor/venobox/venobox.min.js"></script>
+    <script src="~/SocieteZ/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/SocieteZ/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/SocieteZ/js/main.js"></script>
+    <script src="~/SocieteZ/js/site.js"></script>
+    @RenderSection("Scripts", required: false)
+
+
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-4">
+
+                        <div class="footer-info">
+                            <h3>Transport maroc</h3>
+                            <p>
+                                A108  rabat  <br>
+                                NY 535022, Maroc<br><br>
+                                <strong>Phone:</strong> 06-06060606<br>
+                                <strong>Email:</strong> transport@example.com<br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-4">
+
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="Trajet">Nos trajet</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Nos car</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Nouveau trajet</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Nous contacter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+</body>
+</html>

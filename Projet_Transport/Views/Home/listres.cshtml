@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "listres";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liste des articles</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>Ville_depart</th>
+        <th>Ville_arrive</th>
+        <th>Date_depart</th>
+        <th>Nbr_heure</th>
+        <th>Action</th>
+
+    </tr>
+
+    @{
+        foreach (var re in ViewBag.reservations)
+        {
+
+        <tr>
+            <td>@re.id</td>
+            <td>@re.date_reservation</td>
+            <td>@re.trajet.Date_depart</td>
+            <td>@re.trajet.Ville_arrive</td>
+
+
+
+
+        </tr> } }
+
+</table>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">hhh </button>
+
+
+

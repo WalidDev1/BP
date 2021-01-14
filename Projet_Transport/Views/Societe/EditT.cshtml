@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1> salam </h1>
+<!-- Begin Page Content -->
+<body class="bg-gradient-light">
+    <div class="container">
+        <div class="alert-warning center-block">@ViewBag.erreur </div>
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Modifier car !</h1>
+                            </div>
+                            <form action="" method="post">
+                                <!-- calsse user badelha ² -->
+                                <div class="form-group">
+                                    <label>  Ville arrive</label>
+                                    @Html.TextBox("Ville_depart", null, new { @Class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label>  ville arrive</label>
+                                    @Html.TextBox("Ville_arrive", null, new { @Class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label>  Date depart</label>
+                                    @Html.TextBox("Date_depart", null, new { @Class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label>  Nbr_place </label>
+                                    @Html.TextBox("Nbr_heure", null, new { @Class = "form-control" })
+                                </div>
+                                <dwiv class="form-group ">
+
+
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary" name="lil" value="Modifier" />
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+}
+

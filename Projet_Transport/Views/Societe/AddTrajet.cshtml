@@ -1,0 +1,60 @@
+﻿<pre>
+
+
+
+
+</pre>
+<div class="container">
+
+    <form action="" method="post">
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-6">
+                <h1>Ajouter trajet</h1>
+
+                <fieldset>
+
+
+                    <div class="form-group">
+                        <label for="nom">Ville depart</label>
+                        @Html.TextBox("Ville_depart", null, new { @Class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Ville Arrive</label>
+                        @Html.TextBox("Ville_arrive", null, new { @Class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Date depart </label>
+                        @Html.TextBox("Date_depart", null, new { @Class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Nbr heure </label>
+                        @Html.TextBox("Nbr_heure", null, new { @Class = "form-control" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="selection">Categorie</label>
+                        <select id="selection" class="form-control">
+                            <option value="">Categorie</option>
+                            <option value="">confort</option>
+                            <option value="">confort+</option>
+
+                        </select>
+                    </div>
+
+                </fieldset>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" name="lil" value="Ajouter" />
+                </div>
+
+            </div>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </form>
+</div>

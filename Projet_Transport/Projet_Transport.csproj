@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C1B3E71-E594-48D7-B9DD-DAEBA62F8DF0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projet_Transport</RootNamespace>
+    <AssemblyName>Projet_Transport</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44320</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.5\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.barcodes, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.svg.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\reservationsController.cs" />
+    <Compile Include="Controllers\SocieteController.cs" />
+    <Compile Include="Data\Projet_TransportContext.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\car.cs">
+      <DependentUpon>TransportE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\client.cs">
+      <DependentUpon>TransportE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reservation.cs">
+      <DependentUpon>TransportE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\societe.cs">
+      <DependentUpon>TransportE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\trajet.cs">
+      <DependentUpon>TransportE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TransportE.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransportE.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TransportE.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransportE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TransportE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransportE.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ville.cs">
+      <DependentUpon>TransportE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\TransportE.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TransportE.edmx</DependentUpon>
+      <LastGenOutput>TransportE.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TransportE.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TransportE.edmx</DependentUpon>
+      <LastGenOutput>TransportE.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\TransportE.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TransportE.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TransportE.edmx.diagram">
+      <DependentUpon>TransportE.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="SocieteZ\contactform\._contactform.php" />
+    <Content Include="SocieteZ\contactform\._Readme.txt" />
+    <Content Include="SocieteZ\contactform\contactform.php" />
+    <Content Include="SocieteZ\contactform\Readme.txt" />
+    <Content Include="SocieteZ\css\._style.css" />
+    <Content Include="SocieteZ\css\main.css" />
+    <Content Include="SocieteZ\css\site.css" />
+    <Content Include="SocieteZ\css\style.css" />
+    <Content Include="SocieteZ\img\._apple-touch-icon.png" />
+    <Content Include="SocieteZ\img\._blog-1.jpg" />
+    <Content Include="SocieteZ\img\._blog-2.jpg" />
+    <Content Include="SocieteZ\img\._blog-3.jpg" />
+    <Content Include="SocieteZ\img\._blog-4.jpg" />
+    <Content Include="SocieteZ\img\._blog-5.jpg" />
+    <Content Include="SocieteZ\img\._blog-6.jpg" />
+    <Content Include="SocieteZ\img\._blog-author.jpg" />
+    <Content Include="SocieteZ\img\._blog-inside-post.jpg" />
+    <Content Include="SocieteZ\img\._blog-recent-1.jpg" />
+    <Content Include="SocieteZ\img\._blog-recent-2.jpg" />
+    <Content Include="SocieteZ\img\._blog-recent-3.jpg" />
+    <Content Include="SocieteZ\img\._blog-recent-4.jpg" />
+    <Content Include="SocieteZ\img\._blog-recent-5.jpg" />
+    <Content Include="SocieteZ\img\._comments-1.jpg" />
+    <Content Include="SocieteZ\img\._comments-2.jpg" />
+    <Content Include="SocieteZ\img\._comments-3.jpg" />
+    <Content Include="SocieteZ\img\._comments-4.jpg" />
+    <Content Include="SocieteZ\img\._comments-5.jpg" />
+    <Content Include="SocieteZ\img\._comments-6.jpg" />
+    <Content Include="SocieteZ\img\._favicon.png" />
+    <Content Include="SocieteZ\img\._features-1.png" />
+    <Content Include="SocieteZ\img\._features-2.png" />
+    <Content Include="SocieteZ\img\._features-3.png" />
+    <Content Include="SocieteZ\img\._features-4.png" />
+    <Content Include="SocieteZ\img\._features-5.png" />
+    <Content Include="SocieteZ\img\apple-touch-icon.png" />
+    <Content Include="SocieteZ\img\bg-img-03.jpg" />
+    <Content Include="SocieteZ\img\blog-1.jpg" />
+    <Content Include="SocieteZ\img\blog-2.jpg" />
+    <Content Include="SocieteZ\img\blog-3.jpg" />
+    <Content Include="SocieteZ\img\blog-4.jpg" />
+    <Content Include="SocieteZ\img\blog-5.jpg" />
+    <Content Include="SocieteZ\img\blog-6.jpg" />
+    <Content Include="SocieteZ\img\blog-author.jpg" />
+    <Content Include="SocieteZ\img\blog-inside-post.jpg" />
+    <Content Include="SocieteZ\img\blog-recent-1.jpg" />
+    <Content Include="SocieteZ\img\blog-recent-2.jpg" />
+    <Content Include="SocieteZ\img\blog-recent-3.jpg" />
+    <Content Include="SocieteZ\img\blog-recent-4.jpg" />
+    <Content Include="SocieteZ\img\blog-recent-5.jpg" />
+    <Content Include="SocieteZ\img\bus.jpg" />
+    <Content Include="SocieteZ\img\clients\._client-1.png" />
+    <Content Include="SocieteZ\img\clients\._client-2.png" />
+    <Content Include="SocieteZ\img\clients\._client-3.png" />
+    <Content Include="SocieteZ\img\clients\._client-4.png" />
+    <Content Include="SocieteZ\img\clients\._client-5.png" />
+    <Content Include="SocieteZ\img\clients\._client-6.png" />
+    <Content Include="SocieteZ\img\clients\client-1.png" />
+    <Content Include="SocieteZ\img\clients\client-2.png" />
+    <Content Include="SocieteZ\img\clients\client-3.png" />
+    <Content Include="SocieteZ\img\clients\client-4.png" />
+    <Content Include="SocieteZ\img\clients\client-5.png" />
+    <Content Include="SocieteZ\img\clients\client-6.png" />
+    <Content Include="SocieteZ\img\comments-1.jpg" />
+    <Content Include="SocieteZ\img\comments-2.jpg" />
+    <Content Include="SocieteZ\img\comments-3.jpg" />
+    <Content Include="SocieteZ\img\comments-4.jpg" />
+    <Content Include="SocieteZ\img\comments-5.jpg" />
+    <Content Include="SocieteZ\img\comments-6.jpg" />
+    <Content Include="SocieteZ\img\favicon.png" />
+    <Content Include="SocieteZ\img\features-1.png" />
+    <Content Include="SocieteZ\img\features-2.png" />
+    <Content Include="SocieteZ\img\features-3.png" />
+    <Content Include="SocieteZ\img\features-4.png" />
+    <Content Include="SocieteZ\img\features-5.png" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-1.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-2.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-3.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-4.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-5.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-6.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-7.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-8.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-9.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-details-1.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-details-2.jpg" />
+    <Content Include="SocieteZ\img\portfolio\._portfolio-details-3.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-1.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-2.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-3.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-4.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-5.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-6.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-7.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-8.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-9.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-details-1.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-details-2.jpg" />
+    <Content Include="SocieteZ\img\portfolio\portfolio-details-3.jpg" />
+    <Content Include="SocieteZ\img\slide\._slide-1.jpg" />
+    <Content Include="SocieteZ\img\slide\._slide-2.jpg" />
+    <Content Include="SocieteZ\img\slide\._slide-3.jpg" />
+    <Content Include="SocieteZ\img\slide\._slide-4.jpg" />
+    <Content Include="SocieteZ\img\slide\slide-1.jpg" />
+    <Content Include="SocieteZ\img\slide\slide-2.jpg" />
+    <Content Include="SocieteZ\img\slide\slide-3.jpg" />
+    <Content Include="SocieteZ\img\slide\slide-4.jpg" />
+    <Content Include="SocieteZ\img\team\._team-1.jpg" />
+    <Content Include="SocieteZ\img\team\._team-2.jpg" />
+    <Content Include="SocieteZ\img\team\._team-3.jpg" />
+    <Content Include="SocieteZ\img\team\._team-4.jpg" />
+    <Content Include="SocieteZ\img\team\team-1.jpg" />
+    <Content Include="SocieteZ\img\team\team-2.jpg" />
+    <Content Include="SocieteZ\img\team\team-3.jpg" />
+    <Content Include="SocieteZ\img\team\team-4.jpg" />
+    <Content Include="SocieteZ\img\testimonials\._testimonials-1.jpg" />
+    <Content Include="SocieteZ\img\testimonials\._testimonials-2.jpg" />
+    <Content Include="SocieteZ\img\testimonials\._testimonials-3.jpg" />
+    <Content Include="SocieteZ\img\testimonials\._testimonials-4.jpg" />
+    <Content Include="SocieteZ\img\testimonials\._testimonials-5.jpg" />
+    <Content Include="SocieteZ\img\testimonials\._testimonials-6.jpg" />
+    <Content Include="SocieteZ\img\testimonials\testimonials-1.jpg" />
+    <Content Include="SocieteZ\img\testimonials\testimonials-2.jpg" />
+    <Content Include="SocieteZ\img\testimonials\testimonials-3.jpg" />
+    <Content Include="SocieteZ\img\testimonials\testimonials-4.jpg" />
+    <Content Include="SocieteZ\img\testimonials\testimonials-5.jpg" />
+    <Content Include="SocieteZ\img\testimonials\testimonials-6.jpg" />
+    <Content Include="SocieteZ\js\._main.js" />
+    <Content Include="SocieteZ\js\extention\choices.js" />
+    <Content Include="SocieteZ\js\extention\custom-materialize.js" />
+    <Content Include="SocieteZ\js\extention\flatpickr.js" />
+    <Content Include="SocieteZ\js\global.js" />
+    <Content Include="SocieteZ\js\main.js" />
+    <Content Include="SocieteZ\js\site.js" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="SocieteZ\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="SocieteZ\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="SocieteZ\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <Content Include="SocieteZ\lib\jquery-validation\dist\additional-methods.js" />
+    <Content Include="SocieteZ\lib\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="SocieteZ\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="SocieteZ\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="SocieteZ\lib\jquery\dist\jquery.js" />
+    <Content Include="SocieteZ\lib\jquery\dist\jquery.min.js" />
+    <Content Include="SocieteZ\lib\jquery\LICENSE.txt" />
+    <Content Include="SocieteZ\vendor\._animate.css" />
+    <Content Include="SocieteZ\vendor\animate.css\._animate.compat.css" />
+    <Content Include="SocieteZ\vendor\animate.css\._animate.css" />
+    <Content Include="SocieteZ\vendor\animate.css\._animate.min.css" />
+    <Content Include="SocieteZ\vendor\animate.css\animate.compat.css" />
+    <Content Include="SocieteZ\vendor\animate.css\animate.css" />
+    <Content Include="SocieteZ\vendor\animate.css\animate.min.css" />
+    <Content Include="SocieteZ\vendor\bootstrap-wizard\bootstrap.min.js" />
+    <Content Include="SocieteZ\vendor\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="SocieteZ\vendor\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap-grid.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap-grid.min.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap-reboot.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap-reboot.min.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap.min.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\._bootstrap.bundle.js" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\._bootstrap.bundle.min.js" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\._bootstrap.js" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\._bootstrap.min.js" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="SocieteZ\vendor\boxicons\css\._animations.css" />
+    <Content Include="SocieteZ\vendor\boxicons\css\._boxicons.css" />
+    <Content Include="SocieteZ\vendor\boxicons\css\._boxicons.min.css" />
+    <Content Include="SocieteZ\vendor\boxicons\css\._transformations.css" />
+    <Content Include="SocieteZ\vendor\boxicons\css\animations.css" />
+    <Content Include="SocieteZ\vendor\boxicons\css\boxicons.css" />
+    <Content Include="SocieteZ\vendor\boxicons\css\boxicons.min.css" />
+    <Content Include="SocieteZ\vendor\boxicons\css\transformations.css" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\._boxicons.svg" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\boxicons.svg" />
+    <Content Include="SocieteZ\vendor\datepicker\daterangepicker.css" />
+    <Content Include="SocieteZ\vendor\datepicker\daterangepicker.js" />
+    <Content Include="SocieteZ\vendor\datepicker\moment.min.js" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\css\font-awesome.css" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\css\font-awesome.min.css" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\HELP-US-OUT.txt" />
+    <Content Include="SocieteZ\vendor\icofont\._icofont.min.css" />
+    <Content Include="SocieteZ\vendor\icofont\icofont.min.css" />
+    <Content Include="SocieteZ\vendor\isotope-layout\._isotope.pkgd.js" />
+    <Content Include="SocieteZ\vendor\isotope-layout\._isotope.pkgd.min.js" />
+    <Content Include="SocieteZ\vendor\isotope-layout\isotope.pkgd.js" />
+    <Content Include="SocieteZ\vendor\isotope-layout\isotope.pkgd.min.js" />
+    <Content Include="SocieteZ\vendor\jquery-validate\jquery.validate.js" />
+    <Content Include="SocieteZ\vendor\jquery-validate\jquery.validate.min.js" />
+    <Content Include="SocieteZ\vendor\jquery.easing\._jquery.easing.min.js" />
+    <Content Include="SocieteZ\vendor\jquery.easing\jquery.easing.min.js" />
+    <Content Include="SocieteZ\vendor\jquery\._jquery.min.js" />
+    <Content Include="SocieteZ\vendor\jquery\jquery.js" />
+    <Content Include="SocieteZ\vendor\jquery\jquery.min.js" />
+    <Content Include="SocieteZ\vendor\mdi-font\css\material-design-iconic-font.css" />
+    <Content Include="SocieteZ\vendor\mdi-font\css\material-design-iconic-font.min.css" />
+    <Content Include="SocieteZ\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="SocieteZ\vendor\owl.carousel\._owl.carousel.js" />
+    <Content Include="SocieteZ\vendor\owl.carousel\._owl.carousel.min.js" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\._ajax-loader.gif" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\._owl.carousel.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\._owl.carousel.min.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\._owl.theme.default.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\._owl.theme.default.min.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\._owl.theme.green.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\._owl.theme.green.min.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\._owl.video.play.png" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\ajax-loader.gif" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\owl.carousel.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\owl.carousel.min.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\owl.theme.default.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\owl.theme.default.min.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\owl.theme.green.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\owl.theme.green.min.css" />
+    <Content Include="SocieteZ\vendor\owl.carousel\assets\owl.video.play.png" />
+    <Content Include="SocieteZ\vendor\owl.carousel\owl.carousel.js" />
+    <Content Include="SocieteZ\vendor\owl.carousel\owl.carousel.min.js" />
+    <Content Include="SocieteZ\vendor\php-email-form\._validate.js" />
+    <Content Include="SocieteZ\vendor\php-email-form\validate.js" />
+    <Content Include="SocieteZ\vendor\remixicon\._remixicon.css" />
+    <Content Include="SocieteZ\vendor\remixicon\._remixicon.svg" />
+    <Content Include="SocieteZ\vendor\remixicon\._remixicon.symbol.svg" />
+    <Content Include="SocieteZ\vendor\remixicon\remixicon.css" />
+    <Content Include="SocieteZ\vendor\remixicon\remixicon.svg" />
+    <Content Include="SocieteZ\vendor\remixicon\remixicon.symbol.svg" />
+    <Content Include="SocieteZ\vendor\select2\select2.min.css" />
+    <Content Include="SocieteZ\vendor\select2\select2.min.js" />
+    <Content Include="SocieteZ\vendor\venobox\._venobox.css" />
+    <Content Include="SocieteZ\vendor\venobox\._venobox.js" />
+    <Content Include="SocieteZ\vendor\venobox\._venobox.min.css" />
+    <Content Include="SocieteZ\vendor\venobox\._venobox.min.js" />
+    <Content Include="SocieteZ\vendor\venobox\venobox.css" />
+    <Content Include="SocieteZ\vendor\venobox\venobox.js" />
+    <Content Include="SocieteZ\vendor\venobox\venobox.min.css" />
+    <Content Include="SocieteZ\vendor\venobox\venobox.min.js" />
+    <Content Include="SocieteZ\vendor\waypoints\._jquery.waypoints.min.js" />
+    <Content Include="SocieteZ\vendor\waypoints\jquery.waypoints.min.js" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <Content Include="SocieteZ\vendor\font-awesome-4.7\fonts\FontAwesome.otf" />
+    <Content Include="SocieteZ\vendor\mdi-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="SocieteZ\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="SocieteZ\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="SocieteZ\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Views\Car\EditC.cshtml" />
+    <Content Include="Views\Home\listres.cshtml" />
+    <Content Include="Views\reservations\Create.cshtml" />
+    <Content Include="Views\reservations\Delete.cshtml" />
+    <Content Include="Views\reservations\Details.cshtml" />
+    <Content Include="Views\reservations\Edit.cshtml" />
+    <Content Include="Views\reservations\Index.cshtml" />
+    <None Include="Views\Societe\searsh.cshtml" />
+    <None Include="Views\Car\index.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Societe\AddTrajet.cshtml" />
+    <Content Include="Views\Societe\listTrajet.cshtml" />
+    <Content Include="Views\Societe\EditT.cshtml" />
+    <Content Include="Views\Car\AddCar.cshtml" />
+    <Content Include="Views\Car\listcar.cshtml" />
+    <Content Include="SocieteZ\img\.DS_Store" />
+    <Content Include="SocieteZ\img\._.DS_Store" />
+    <Content Include="SocieteZ\img\._clients" />
+    <Content Include="SocieteZ\img\._portfolio" />
+    <Content Include="SocieteZ\img\._slide" />
+    <Content Include="SocieteZ\img\._team" />
+    <Content Include="SocieteZ\img\._testimonials" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="SocieteZ\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="SocieteZ\lib\bootstrap\LICENSE" />
+    <Content Include="SocieteZ\lib\jquery-validation\LICENSE.md" />
+    <Content Include="SocieteZ\lib\jquery\dist\jquery.min.map" />
+    <Content Include="SocieteZ\vendor\._bootstrap" />
+    <Content Include="SocieteZ\vendor\._boxicons" />
+    <Content Include="SocieteZ\vendor\._icofont" />
+    <Content Include="SocieteZ\vendor\._isotope-layout" />
+    <Content Include="SocieteZ\vendor\._jquery" />
+    <Content Include="SocieteZ\vendor\._jquery.easing" />
+    <Content Include="SocieteZ\vendor\._owl.carousel" />
+    <Content Include="SocieteZ\vendor\._php-email-form" />
+    <Content Include="SocieteZ\vendor\._remixicon" />
+    <Content Include="SocieteZ\vendor\._venobox" />
+    <Content Include="SocieteZ\vendor\._waypoints" />
+    <Content Include="SocieteZ\vendor\bootstrap\._css" />
+    <Content Include="SocieteZ\vendor\bootstrap\._js" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap-grid.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap-grid.min.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap-reboot.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap-reboot.min.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\._bootstrap.min.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\._bootstrap.bundle.js.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\._bootstrap.bundle.min.js.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\._bootstrap.js.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\._bootstrap.min.js.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="SocieteZ\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="SocieteZ\vendor\boxicons\._css" />
+    <Content Include="SocieteZ\vendor\boxicons\._fonts" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\._boxicons.eot" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\._boxicons.ttf" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\._boxicons.woff" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\._boxicons.woff2" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\boxicons.eot" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\boxicons.ttf" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\boxicons.woff" />
+    <Content Include="SocieteZ\vendor\boxicons\fonts\boxicons.woff2" />
+    <Content Include="SocieteZ\vendor\icofont\._fonts" />
+    <Content Include="SocieteZ\vendor\icofont\fonts\._icofont.woff" />
+    <Content Include="SocieteZ\vendor\icofont\fonts\._icofont.woff2" />
+    <Content Include="SocieteZ\vendor\icofont\fonts\icofont.woff" />
+    <Content Include="SocieteZ\vendor\icofont\fonts\icofont.woff2" />
+    <Content Include="SocieteZ\vendor\jquery\._jquery.min.map" />
+    <Content Include="SocieteZ\vendor\jquery\jquery.min.map" />
+    <Content Include="SocieteZ\vendor\owl.carousel\._assets" />
+    <Content Include="SocieteZ\vendor\owl.carousel\._LICENSE" />
+    <Content Include="SocieteZ\vendor\owl.carousel\._README.md" />
+    <Content Include="SocieteZ\vendor\owl.carousel\LICENSE" />
+    <Content Include="SocieteZ\vendor\owl.carousel\README.md" />
+    <Content Include="SocieteZ\vendor\remixicon\._remixicon.eot" />
+    <Content Include="SocieteZ\vendor\remixicon\._remixicon.less" />
+    <Content Include="SocieteZ\vendor\remixicon\._remixicon.ttf" />
+    <Content Include="SocieteZ\vendor\remixicon\._remixicon.woff" />
+    <Content Include="SocieteZ\vendor\remixicon\._remixicon.woff2" />
+    <Content Include="SocieteZ\vendor\remixicon\remixicon.eot" />
+    <Content Include="SocieteZ\vendor\remixicon\remixicon.less" />
+    <Content Include="SocieteZ\vendor\remixicon\remixicon.ttf" />
+    <Content Include="SocieteZ\vendor\remixicon\remixicon.woff" />
+    <Content Include="SocieteZ\vendor\remixicon\remixicon.woff2" />
+    <Content Include="Views\trajets\Create.cshtml" />
+    <Content Include="Views\trajets\Delete.cshtml" />
+    <Content Include="Views\trajets\Details.cshtml" />
+    <Content Include="Views\trajets\Edit.cshtml" />
+    <Content Include="Views\trajets\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49611</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44320/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

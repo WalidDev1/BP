@@ -1,0 +1,67 @@
+﻿@model Projet_Transport.Models.trajet
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>trajet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville_depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville_depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville_arrive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville_arrive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nbr_heure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nbr_heure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.car.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.car.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ville.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ville.nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

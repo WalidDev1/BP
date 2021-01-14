@@ -1,0 +1,90 @@
+﻿<h2>Liste des articles</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>Ville_depart</th>
+        <th>Ville_arrive</th>
+        <th>Date_depart</th>
+        <th>Nbr_heure</th>
+        <th>Action</th>
+
+    </tr>
+
+    @{ 
+        foreach (var traj in ViewBag.trajets)
+        {
+          
+        <tr>
+            <td>@traj.id</td>
+            <td>@traj.Ville_depart</td>
+            <td>@traj.Ville_arrive</td>
+            <td>@traj.Date_depart</td>
+            <td>@traj.Nbr_heure</td>
+            <td>
+                @Html.ActionLink("Supprimer", "deleteT", new { id = traj.id })//
+                @Html.ActionLink("modifier", "EditT", new { id = traj.id })
+            </td>
+
+
+        </tr>
+ } }
+
+</table>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">hhh </button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modification du trajet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+
+                    @using (Html.BeginForm("modifier", "Societe", new { id = 7 }, FormMethod.Post))
+                    {
+
+        @Html.Hidden("id")
+                        <div class="form-group">
+                            <label for="nom">Ville depart</label>
+                            @Html.TextBox("Ville_depart", null, new { @Class = "form-control" })
+                        </div>
+                                        <div class="form-group">
+                                            <label for="nom">Ville Arrive</label>
+                                            @Html.TextBox("Ville_arrive", null, new { @Class = "form-control" })
+                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nom">Date depart </label>
+                                                            @Html.TextBox("Date_depart", null, new { @Class = "form-control" })
+                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="nom">Nbr heure </label>
+                                                                            @Html.TextBox("Nbr_heure", null, new { @Class = "form-control" })
+                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="selection">Categorie</label>
+                                                                                            <select id="selection" class="form-control">
+                                                                                                <option value="">Categorie</option>
+                                                                                                <option value="">confort</option>
+                                                                                                <option value="">confort+</option>
+
+                                                                                            </select>
+                                                                                        </div>
+                                                                                                        <div class="modal-footer">
+                                                                                                            <button type="submit" class="btn btn-primary">Modifier</button>
+                                                                                                        </div>            }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button onclick="window.location.href = '/Societe/AddTrajet';" type="submit" class="btn btn-secondary">Nouveau trajet </button>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="974a70ded73d4ad6bf8cee871bbb430e" Name="Diagram1">
+        <EntityTypeShape EntityType="TransportBDModel.car" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransportBDModel.client" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransportBDModel.reservation" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransportBDModel.societe" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransportBDModel.trajet" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransportBDModel.ville" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="TransportBDModel.FK__societe__idCar__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="TransportBDModel.FK__trajet__idCar__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="TransportBDModel.FK__reservati__idCli__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="TransportBDModel.FK__reservati__idTra__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="TransportBDModel.FK__trajet__idSociet__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="TransportBDModel.FK__trajet__idVille__59063A47" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

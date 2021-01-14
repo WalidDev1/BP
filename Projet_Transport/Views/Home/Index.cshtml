@@ -1,0 +1,569 @@
+﻿@{ ViewData["Title"] = "Home Page"; }
+@model List<Projet_Transport.Models.ville>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        .bg-color {
+            background-color: #46a1de;
+            transition-duration: 0.5s;
+        }
+
+        .text-color {
+            color: #46a1de;
+            transition-duration: 0.5s;
+        }
+
+
+        .tabs {
+            background-color: #d9232d;
+            border-radius: 5px;
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+            -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+        }
+
+            .tabs > li {
+                transition-duration: 0.25s;
+                display: table-cell;
+                list-style: none;
+                text-align: center;
+                padding: 20px 20px 25px 20px;
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                color: black;
+            }
+
+                .tabs > li:before {
+                    z-index: -1;
+                    position: absolute;
+                    content: "";
+                    width: 100%;
+                    height: 120%;
+                    top: 0;
+                    left: 0;
+                    background-color: rgba(255, 255, 255, 0.3);
+                    -webkit-transform: translateY(100%);
+                    transform: translateY(100%);
+                    transition-duration: 0.25s;
+                    border-radius: 5px 5px 0 0;
+                }
+
+                .tabs > li:hover:before {
+                    -webkit-transform: translateY(70%);
+                    transform: translateY(70%);
+                }
+
+                .tabs > li.active {
+                    color: #50555a;
+                }
+
+                    .tabs > li.active:before {
+                        transition-duration: 0.5s;
+                        background-color: white;
+                        -webkit-transform: translateY(0);
+                        transform: translateY(0);
+                    }
+
+        .tab__content {
+            background-color: white;
+            position: relative;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+            .tab__content > li {
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+                list-style: none;
+            }
+
+        .tab_content > li .content_wrapper {
+            border-radius: 5px;
+            width: 100%;
+            padding: 45px 40px 40px 40px;
+            background-color: white;
+        }
+
+        .content__wrapper h2 {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .content__wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .colors {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+            .colors > li {
+                list-style: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border-bottom: 5px solid rgba(0, 0, 0, 0.1);
+                display: inline-block;
+                margin: 0 10px;
+                cursor: pointer;
+                transition-duration: 0.2s;
+                box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+            }
+
+                .colors > li:hover {
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
+                    border-bottom: 10px solid rgba(0, 0, 0, 0.15);
+                    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+                }
+
+                .colors > li.active-color {
+                    -webkit-transform: scale(1.2) translateY(-10px);
+                    transform: scale(1.2) translateY(-10px);
+                    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+                    border-bottom: 20px solid rgba(0, 0, 0, 0.15);
+                }
+
+                .colors > li:nth-child(1) {
+                    background-color: #2ecc71;
+                }
+
+                .colors > li:nth-child(2) {
+                    background-color: #D64A4B;
+                }
+
+                .colors > li:nth-child(3) {
+                    background-color: #8e44ad;
+                }
+
+                .colors > li:nth-child(4) {
+                    background-color: #46a1de;
+                }
+
+                .colors > li:nth-child(5) {
+                    background-color: #bdc3c7;
+                }
+    </style>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colrolib Templates">
+    <meta name="author" content="Colrolib">
+    <meta name="keywords" content="Colrolib Templates">
+
+    <link href="~/SocieteZ/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/SocieteZ/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="~/SocieteZ/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/SocieteZ/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/SocieteZ/css/main.css" rel="stylesheet" media="all">
+    <!-- Favicons -->
+    <link href="~/SocieteZ/img/favicon.png" rel="icon">
+    <link href="~/SocieteZ/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/SocieteZ/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="~/SocieteZ/vendor/owl.carousel/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/SocieteZ/css/style.css" rel="stylesheet">
+    <link href="~/SocieteZ/css/site.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Sailor - v2.3.0
+    * Template URL: https://bootstrapmade.com/sailor-free-bootstrap-theme/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active" style="  background-image: url(C:\Users\kotlita\source\repos\Projet_Transport\Projet_Transport\SocieteZ\img\bus.jpg)">
+                <div class="s002">
+                    <form>
+                        <div class="inner-form">
+                            <div class="input-field fouth-wrap">
+                                <div class="icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                                    </svg>
+                                </div>
+                                <select data-trigger="" name="choices-single-defaul">
+
+                                    <option placeholder="">--Ville_arrive--</option>
+
+                                    @foreach (Projet_Transport.Models.ville vil in Model)
+                                    {
+                                <option id="search">@vil.nomVille  </option>
+}
+                                </select>
+
+                            </div>
+
+                            
+
+                            <div class="input-field fouth-wrap">
+                                <div class="icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                                    </svg>
+                                </div>
+                                <select data-trigger="" name="choices-single-defaul">
+
+                                    <option placeholder="">--Ville_arrive--</option>
+
+                                    @foreach (var vil in Model)
+                                    {
+                            <option id="search">@vil.nomVille  </option>}
+                                </select>
+                            </div>
+                            <div class="input-field second-wrap">
+                                <div class="icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+                                    </svg>
+                                </div>
+                                <input class="datepicker" id="depart" type="text" placeholder="--Date_depart--" />
+                            </div>
+
+                            <div class="input-field second-wrap">
+                                <div class="icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+                                    </svg>
+                                </div>
+                                <input class="datepicker" id="depart" type="text" placeholder="--Date_arrive--" />
+                            </div>
+                            <div class="input-field fifth-wrap">
+                                <button class="btn-search" type="button">SEARCH</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <script src="~/SocieteZ/js/extention/choices.js"></script>
+                <script src="~/SocieteZ/js/extention/flatpickr.js"></script>
+                <script>
+                    flatpickr(".datepicker",
+                        {});
+
+                </script>
+                <script>
+                    const choices = new Choices('[data-trigger]',
+                        {
+                            searchEnabled: false,
+                            itemSelectText: '',
+                        });
+
+                </script>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+
+                <div>
+                    <img src="~/SocieteZ/img/VideoCover.jpg" class="img-fluid" alt="">
+                    <a href="https://www.youtube.com/watch?v=H-7Id5afpwE" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+                </div>
+
+                <div>
+                    <form id="formConnect">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <input id="btnInsc" type="button" class="btn btn-outline-danger" style=" width: 100%;" value="Inscription">
+                        <button type="submit" class="btn " style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px ">Connection</button>
+                    </form>
+                    <section class="wrapper">
+                        <ul class="tabs" style=" padding-left: 0px;">
+                            <li class="active">Client</li>
+                            <li>Societe</li>
+                        </ul>
+                        <ul class="tab__content" style="padding-left: 0px;">
+                            <li class="active">
+                                <div class="content__wrapper">
+                                    <form action="" method="post">
+
+                                        <div class="mb-3">
+                                            <label for="InputNom" class="form-label">Nom Complet</label>
+                                            <div type="text" class="form-control" id="InputNom">
+                                                @Html.TextBox("nom", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="InputTele" class="form-label">Tele</label>
+                                            <div class="form-control" id="InputTele">
+                                                @Html.TextBox("tele", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+
+                                            <div class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                @Html.TextBox("login", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Password</label>
+
+                                            <div class="form-control" id="exampleInputPassword1">
+                                                @Html.TextBox("mdp", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <button id="1" type="submit" class="btn" style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px;">Inscription</button>
+                                        <button id="btnConnec" class="btn btn-outline-danger" style=" width: 100%;">Connection</button>
+                                    </form>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="content__wrapper">
+
+                                    <form action="" method="post">
+
+                                        <div class="mb-3">
+                                            <label for="InputNom" class="form-label">Nom</label>
+                                            <div class="form-control" id="InputNom">
+                                                @Html.TextBox("nom", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="InputTele" class="form-label">Teles</label>
+                                            <div for="InputTele" class="form-label">
+                                                @Html.TextBox("tele", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="InputAdresse" class="form-label">Adresse</label>
+                                            <div for="InputAdresse" class="form-label">
+                                                @Html.TextBox("adresse", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+
+                                            <label for="exampleInputEmail1" class="form-label">Login</label>
+                                            <div class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                @Html.TextBox("login", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label for="Mot de passe" class="form-label">Mot de passe</label>
+                                            <div class="form-control" id="exampleInputPassword1">
+                                                @Html.TextBox("mdp", null, new { @Class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <button id="0" type="submit" name="inscrSocie" style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px;">Inscription</button>
+                                    </form>
+
+                                    <button id="btnConnec" class="btn btn-outline-danger" style=" width: 100%;">Connection</button>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+
+
+        <!-- End #main -->
+        <!-- Template searsh -->
+
+    </main>
+</body>
+
+</html>
+<!-- Jquery JS-->
+<script src="~/SocieteZ/vendor/jquery/jquery.min.js"></script>
+<!-- Vendor JS-->
+<script src="~/SocieteZ/vendor/select2/select2.min.js"></script>
+<script src="~/SocieteZ/vendor/jquery-validate/jquery.validate.min.js"></script>
+<script src="~/SocieteZ/vendor/bootstrap-wizard/bootstrap.min.js"></script>
+<script src="~/SocieteZ/vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+<script src="~/SocieteZ/vendor/datepicker/moment.min.js"></script>
+<script src="~/SocieteZ/vendor/datepicker/daterangepicker.js"></script>
+
+<!-- Main JS-->
+<script src="~/SocieteZ/js/global.js"></script>
+<!-- Vendor JS Files -->
+<script src="~/SocieteZ/vendor/jquery/jquery.min.js"></script>
+<script src="~/SocieteZ/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/SocieteZ/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="~/SocieteZ/vendor/php-email-form/validate.js"></script>
+<script src="~/SocieteZ/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="~/SocieteZ/vendor/venobox/venobox.min.js"></script>
+<script src="~/SocieteZ/vendor/waypoints/jquery.waypoints.min.js"></script>
+<script src="~/SocieteZ/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="~/SocieteZ/js/main.js"></script>
+<script src="~/SocieteZ/js/site.js"></script>
+
+<!-- Templatesearshe -->
+
+<script>
+    $(".wrapper").hide();
+    var clickedTab = $(".tabs > .active");
+    var tabWrapper = $(".tab__content");
+    var activeTab = tabWrapper.find(".active");
+    var activeTabHeight = activeTab.outerHeight();
+
+    // Show tab on page load
+
+    activeTab.show();
+
+    $("#btnConnec").click(function () {
+        $(".wrapper").hide();
+        $("#formConnect").show();
+    });
+
+    $("#btnInsc").click(function () {
+        $(".wrapper").show();
+        $("#formConnect").hide();
+
+        activeTab.fadeOut(250, function () {
+
+            // Remove active class all tabs
+            $(".tab__content > li").removeClass("active");
+
+            // Get index of clicked tab
+            var clickedTabIndex = clickedTab.index();
+
+            // Add class active to corresponding tab
+            $(".tab__content > li").eq(clickedTabIndex).addClass("active");
+
+            activeTab = $(".tab__content > .active");
+
+            // Update variable
+            activeTabHeight = activeTab.outerHeight();
+
+            tabWrapper.stop().delay(50).animate({
+                height: activeTabHeight
+            }, 500, function () {
+
+                activeTab.delay(50).fadeIn(250);
+
+            });
+        });
+    });
+
+    $(document).ready(function () {
+
+        // Variables
+
+
+        tabWrapper.height(activeTabHeight);
+
+        $(".tabs > li").on("click", function () {
+
+            // Remove class from active tab
+            $(".tabs > li").removeClass("active");
+
+            $(this).addClass("active");
+
+            // Update clickedTab variable
+            clickedTab = $(".tabs .active");
+
+            // fade out active tab
+
+            activeTab.fadeOut(250, function () {
+
+                // Remove active class all tabs
+                $(".tab__content > li").removeClass("active");
+
+                // Get index of clicked tab
+                var clickedTabIndex = clickedTab.index();
+
+                // Add class active to corresponding tab
+                $(".tab__content > li").eq(clickedTabIndex).addClass("active");
+
+                // update new active tab
+                activeTab = $(".tab__content > .active");
+
+                // Update variable
+                activeTabHeight = activeTab.outerHeight();
+
+                // Animate height of wrapper to new tab height
+                tabWrapper.stop().delay(50).animate({
+                    height: activeTabHeight
+                }, 500, function () {
+
+                    // Fade in active tab
+                    activeTab.delay(50).fadeIn(250);
+
+                });
+            });
+        });
+    });</script>
+
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
