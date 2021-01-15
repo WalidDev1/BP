@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TransportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="car">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nbr_place" Type="int" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="id_societe" Type="int" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="varchar" MaxLength="50" />
+    <Property Name="tele" Type="int" />
+    <Property Name="login_client" Type="varchar" MaxLength="60" />
+    <Property Name="mdp_client" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="reservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_reservation" Type="datetime" />
+    <Property Name="idClient" Type="int" />
+    <Property Name="idTrajet" Type="int" />
+    <Property Name="nbr" Type="int" />
+  </EntityType>
+  <EntityType Name="societe">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="varchar" MaxLength="50" />
+    <Property Name="tele" Type="int" />
+    <Property Name="adresse" Type="varchar" MaxLength="50" />
+    <Property Name="login_societe" Type="varchar" MaxLength="60" />
+    <Property Name="mdp_societe" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="trajet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_ville_depart" Type="int" />
+    <Property Name="id_ville_arrive" Type="int" />
+    <Property Name="Date_depart" Type="datetime" />
+    <Property Name="Date_arrive" Type="datetime" />
+    <Property Name="idCar" Type="int" />
+    <Property Name="prix" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ville">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomVille" Type="varchar" MaxLength="90" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__reservati__idCli__32E0915F">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reservation">
+        <PropertyRef Name="idClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__reservati__idTra__33D4B598">
+    <End Role="trajet" Type="Self.trajet" Multiplicity="0..1" />
+    <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trajet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reservation">
+        <PropertyRef Name="idTrajet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trajet__idCar__36B12243">
+    <End Role="car" Type="Self.car" Multiplicity="0..1" />
+    <End Role="trajet" Type="Self.trajet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="car">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="trajet">
+        <PropertyRef Name="idCar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trajet_ville_aller">
+    <End Role="ville" Type="Self.ville" Multiplicity="0..1" />
+    <End Role="trajet" Type="Self.trajet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ville">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="trajet">
+        <PropertyRef Name="id_ville_depart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trajet_ville_dest">
+    <End Role="ville" Type="Self.ville" Multiplicity="0..1" />
+    <End Role="trajet" Type="Self.trajet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ville">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="trajet">
+        <PropertyRef Name="id_ville_arrive" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TransportModelStoreContainer">
+    <EntitySet Name="car" EntityType="Self.car" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reservation" EntityType="Self.reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="societe" EntityType="Self.societe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trajet" EntityType="Self.trajet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ville" EntityType="Self.ville" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__reservati__idCli__32E0915F" Association="Self.FK__reservati__idCli__32E0915F">
+      <End Role="client" EntitySet="client" />
+      <End Role="reservation" EntitySet="reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__reservati__idTra__33D4B598" Association="Self.FK__reservati__idTra__33D4B598">
+      <End Role="trajet" EntitySet="trajet" />
+      <End Role="reservation" EntitySet="reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trajet__idCar__36B12243" Association="Self.FK__trajet__idCar__36B12243">
+      <End Role="car" EntitySet="car" />
+      <End Role="trajet" EntitySet="trajet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trajet_ville_aller" Association="Self.FK_trajet_ville_aller">
+      <End Role="ville" EntitySet="ville" />
+      <End Role="trajet" EntitySet="trajet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trajet_ville_dest" Association="Self.FK_trajet_ville_dest">
+      <End Role="ville" EntitySet="ville" />
+      <End Role="trajet" EntitySet="trajet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

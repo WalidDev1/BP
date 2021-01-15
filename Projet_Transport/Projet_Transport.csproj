@@ -166,6 +166,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\offresController.cs" />
     <Compile Include="Controllers\reservationsController.cs" />
     <Compile Include="Controllers\SocieteController.cs" />
     <Compile Include="Data\Projet_TransportContext.cs" />
@@ -173,37 +174,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\car.cs">
-      <DependentUpon>TransportE.tt</DependentUpon>
+      <DependentUpon>transport.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\client.cs">
-      <DependentUpon>TransportE.tt</DependentUpon>
+      <DependentUpon>transport.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\reservation.cs">
-      <DependentUpon>TransportE.tt</DependentUpon>
+      <DependentUpon>transport.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\societe.cs">
-      <DependentUpon>TransportE.tt</DependentUpon>
+      <DependentUpon>transport.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\trajet.cs">
-      <DependentUpon>TransportE.tt</DependentUpon>
+      <DependentUpon>transport.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TransportE.Context.cs">
+    <Compile Include="Models\transport.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TransportE.Context.tt</DependentUpon>
+      <DependentUpon>transport.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TransportE.cs">
+    <Compile Include="Models\transport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TransportE.tt</DependentUpon>
+      <DependentUpon>transport.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TransportE.Designer.cs">
+    <Compile Include="Models\transport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TransportE.edmx</DependentUpon>
+      <DependentUpon>transport.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ville.cs">
-      <DependentUpon>TransportE.tt</DependentUpon>
+      <DependentUpon>transport.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -216,24 +217,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\TransportE.Context.tt">
+    <Content Include="Models\transport.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TransportE.edmx</DependentUpon>
-      <LastGenOutput>TransportE.Context.cs</LastGenOutput>
+      <DependentUpon>transport.edmx</DependentUpon>
+      <LastGenOutput>transport.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\TransportE.tt">
+    <Content Include="Models\transport.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TransportE.edmx</DependentUpon>
-      <LastGenOutput>TransportE.cs</LastGenOutput>
+      <DependentUpon>transport.edmx</DependentUpon>
+      <LastGenOutput>transport.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\TransportE.edmx">
+    <EntityDeploy Include="Models\transport.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TransportE.Designer.cs</LastGenOutput>
+      <LastGenOutput>transport.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\TransportE.edmx.diagram">
-      <DependentUpon>TransportE.edmx</DependentUpon>
+    <Content Include="Models\transport.edmx.diagram">
+      <DependentUpon>transport.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -518,6 +519,7 @@
     <Content Include="Views\reservations\Details.cshtml" />
     <Content Include="Views\reservations\Edit.cshtml" />
     <Content Include="Views\reservations\Index.cshtml" />
+    <Content Include="Views\offres\Index.cshtml" />
     <None Include="Views\Societe\searsh.cshtml" />
     <None Include="Views\Car\index.cshtml" />
     <Content Include="Web.config" />

@@ -215,15 +215,15 @@
 
     <!-- ======= Header ======= -->
     <!-- ======= Hero Section ======= -->
-    <section id="hero">
+    <section id="hero" style="background-image : url('../../SocieteZ/img/bus.jpg')">
         <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
             <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
             <!-- Slide 1 -->
-            <div class="carousel-item active" style="  background-image: url(C:\Users\kotlita\source\repos\Projet_Transport\Projet_Transport\SocieteZ\img\bus.jpg)">
+            <div class="carousel-item active">
                 <div class="s002">
-                    <form>
+                    <form method="get" action="/Home/Rechercher">
                         <div class="inner-form">
                             <div class="input-field fouth-wrap">
                                 <div class="icon-wrap">
@@ -231,14 +231,18 @@
                                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
                                     </svg>
                                 </div>
-                                <select data-trigger="" name="choices-single-defaul">
+                                <select data-trigger="" name="ville_depart">
 
                                     <option placeholder="">--Ville_arrive--</option>
 
-                                    @foreach (Projet_Transport.Models.ville vil in Model)
+                                    @if (Model != null)
                                     {
-                                <option id="search">@vil.nomVille  </option>
-}
+                                        foreach (Projet_Transport.Models.ville vil in Model)
+                                        {
+                                            <option id="search">@vil.nomVille  </option>
+                                        }
+                                    }
+
                                 </select>
 
                             </div>
@@ -251,22 +255,27 @@
                                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
                                     </svg>
                                 </div>
-                                <select data-trigger="" name="choices-single-defaul">
+                                <select data-trigger="" name="ville_arriver">
 
                                     <option placeholder="">--Ville_arrive--</option>
 
-                                    @foreach (var vil in Model)
+                                    @if (Model != null)
                                     {
-                            <option id="search">@vil.nomVille  </option>}
+                                        foreach (Projet_Transport.Models.ville vil in Model)
+                                        {
+                                            <option id="search">@vil.nomVille  </option>
+                                        }
+                                    }
                                 </select>
                             </div>
                             <div class="input-field second-wrap">
                                 <div class="icon-wrap">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                         <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+                                 
                                     </svg>
                                 </div>
-                                <input class="datepicker" id="depart" type="text" placeholder="--Date_depart--" />
+                                <input  id="depart" type="datetime-local" name="date_depart" placeholder="--Date_depart--" />
                             </div>
 
                             <div class="input-field second-wrap">
@@ -275,10 +284,10 @@
                                         <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
                                     </svg>
                                 </div>
-                                <input class="datepicker" id="depart" type="text" placeholder="--Date_arrive--" />
+                                <input type="datetime-local" id="depart" name="date_arriver" placeholder="--Date_arrive--" />
                             </div>
                             <div class="input-field fifth-wrap">
-                                <button class="btn-search" type="button">SEARCH</button>
+                                <button class="btn-search" type="submit">Rechercher</button>
                             </div>
                         </div>
                     </form>
@@ -316,108 +325,142 @@
                 </div>
 
                 <div>
-                    <form id="formConnect">
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <input id="btnInsc" type="button" class="btn btn-outline-danger" style=" width: 100%;" value="Inscription">
-                        <button type="submit" class="btn " style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px ">Connection</button>
-                    </form>
-                    <section class="wrapper">
-                        <ul class="tabs" style=" padding-left: 0px;">
-                            <li class="active">Client</li>
-                            <li>Societe</li>
-                        </ul>
-                        <ul class="tab__content" style="padding-left: 0px;">
-                            <li class="active">
-                                <div class="content__wrapper">
-                                    <form action="" method="post">
+                    @if (Session["isconnect"] != null && (bool)Session["isconnect"] == true)
+                    {
+                        if ((int)Session["whoIam"] == 1)
+                        {
+                            <div class="row" style="color:black;font-weight:800">
+                                Bienvenu @ViewBag.Client.nom
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row" style="color:black;font-weight:800">
+                                Bienvenu @ViewBag.Societe.nom
+                            </div>
+                        }
 
-                                        <div class="mb-3">
-                                            <label for="InputNom" class="form-label">Nom Complet</label>
-                                            <div type="text" class="form-control" id="InputNom">
-                                                @Html.TextBox("nom", null, new { @Class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="InputTele" class="form-label">Tele</label>
-                                            <div class="form-control" id="InputTele">
-                                                @Html.TextBox("tele", null, new { @Class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    }
+                    else
+                    {
+                        <form id="formConnect" method="post" action="">
+                            <div class="row">
+                                <div class="col-md-3" style="color:black ; font-weight:800">
+                                    Je suis un :
+                                </div>
+                                <div class="form-check col-md-3">
+                                    <input class="form-check-input" type="radio" name="hwoIam" id="inlineRadio1" value="Client">
+                                    <label class="form-check-label" for="inlineRadio1">Client</label>
+                                </div>
+                                <div class="form-check col-md-3">
+                                    <input class="form-check-input" type="radio" name="hwoIam" id="inlineRadio2" value="Societe">
+                                    <label class="form-check-label" for="inlineRadio2">Societe</label>
+                                </div>
+                            </div>
 
-                                            <div class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                @Html.TextBox("login", null, new { @Class = "form-control" })
-                                            </div>
-                                        </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" name="login" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                            </div>
+                            <input id="btnInsc" type="button" class="btn btn-outline-danger" style=" width: 100%;" value="Inscription">
+                            <button type="submit" class="btn " style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px ">Connection</button>
+                        </form>
+                        <section class="wrapper">
+                            <ul class="tabs" style=" padding-left: 0px;">
+                                <li class="active">Client</li>
+                                <li>Societe</li>
+                            </ul>
+                            <ul class="tab__content" style="padding-left: 0px;">
+                                <li class="active">
+                                    <div class="content__wrapper">
+                                        <form action="" method="post">
 
-                                        <div class="mb-3">
-                                            <label for="exampleInputPassword1" class="form-label">Password</label>
-
-                                            <div class="form-control" id="exampleInputPassword1">
-                                                @Html.TextBox("mdp", null, new { @Class = "form-control" })
+                                            <div class="mb-3">
+                                                <label for="InputNom" class="form-label">Nom Complet</label>
+                                                <div type="text" class="form-control" id="InputNom">
+                                                    @Html.TextBox("nom", null, new { @Class = "form-control" })
+                                                </div>
                                             </div>
-                                        </div>
-                                        <button id="1" type="submit" class="btn" style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px;">Inscription</button>
+                                            <div class="mb-3">
+                                                <label for="InputTele" class="form-label">Tele</label>
+                                                <div class="form-control" id="InputTele">
+                                                    @Html.TextBox("tele", null, new { @Class = "form-control" })
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+
+                                                <div class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    @Html.TextBox("login_client", null, new { @Class = "form-control" })
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword1" class="form-label">Password</label>
+
+                                                <div class="form-control" id="exampleInputPassword1">
+                                                    @Html.TextBox("mdp_client", null, new { @Class = "form-control" })
+                                                </div>
+                                            </div>
+                                            <button id="1" type="submit" class="btn" style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px;">Inscription</button>
+                                            <button id="btnConnec" class="btn btn-outline-danger" style=" width: 100%;">Connection</button>
+                                        </form>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="content__wrapper">
+
+                                        <form action="" method="post">
+
+                                            <div class="mb-3">
+                                                <label for="InputNom" class="form-label">Nom</label>
+                                                <div class="form-control" id="InputNom">
+                                                    @Html.TextBox("nom", null, new { @Class = "form-control" })
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="InputTele" class="form-label">Teles</label>
+                                                <div for="InputTele" class="form-label">
+                                                    @Html.TextBox("tele", null, new { @Class = "form-control" })
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="InputAdresse" class="form-label">Adresse</label>
+                                                <div for="InputAdresse" class="form-label">
+                                                    @Html.TextBox("adresse", null, new { @Class = "form-control" })
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+
+                                                <label for="exampleInputEmail1" class="form-label">Login</label>
+                                                <div class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    @Html.TextBox("login_societe", null, new { @Class = "form-control" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3">
+                                                <label for="Mot de passe" class="form-label">Mot de passe</label>
+                                                <div class="form-control" id="exampleInputPassword1">
+                                                    @Html.TextBox("mdp_societe", null, new { @Class = "form-control" })
+                                                </div>
+                                            </div>
+                                            <button id="0" type="submit" name="inscrSocie" style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px;">Inscription</button>
+                                        </form>
+
                                         <button id="btnConnec" class="btn btn-outline-danger" style=" width: 100%;">Connection</button>
-                                    </form>
-                                </div>
-                            </li>
 
-                            <li>
-                                <div class="content__wrapper">
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+                    }
 
-                                    <form action="" method="post">
-
-                                        <div class="mb-3">
-                                            <label for="InputNom" class="form-label">Nom</label>
-                                            <div class="form-control" id="InputNom">
-                                                @Html.TextBox("nom", null, new { @Class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="InputTele" class="form-label">Teles</label>
-                                            <div for="InputTele" class="form-label">
-                                                @Html.TextBox("tele", null, new { @Class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="InputAdresse" class="form-label">Adresse</label>
-                                            <div for="InputAdresse" class="form-label">
-                                                @Html.TextBox("adresse", null, new { @Class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-
-                                            <label for="exampleInputEmail1" class="form-label">Login</label>
-                                            <div class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                @Html.TextBox("login", null, new { @Class = "form-control" })
-                                            </div>
-                                        </div>
-
-
-                                        <div class="mb-3">
-                                            <label for="Mot de passe" class="form-label">Mot de passe</label>
-                                            <div class="form-control" id="exampleInputPassword1">
-                                                @Html.TextBox("mdp", null, new { @Class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <button id="0" type="submit" name="inscrSocie" style=" background: #d9232d; width: 100% ;color: #fff; border-radius: 4px;  white-space: nowrap; transition: 0.3s; font-size: 14px; display: inline-block;  padding: 8px 30px 9px 30px;">Inscription</button>
-                                    </form>
-
-                                    <button id="btnConnec" class="btn btn-outline-danger" style=" width: 100%;">Connection</button>
-
-                                </div>
-                            </li>
-                        </ul>
-                    </section>
                 </div>
 
             </div>

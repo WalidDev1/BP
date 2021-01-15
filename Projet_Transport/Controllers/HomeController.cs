@@ -11,41 +11,63 @@ namespace Projet_Transport.Controllers
     public class HomeController : Controller
     {
 
+        TransportEntitieslast db = new TransportEntitieslast();
 
-        TransportBDEntities3 db = new TransportBDEntities3();
-        public string[] listeville = {
-            "Volvo",
-            "BMW",
-            "Ford",
-            "Mazda"
-        };
-
-
-        [Route("")]
-        public ActionResult Index()
-        {
-            return View();
-        }
+    
    
        
 
-        [HttpPost]
         [Route("")]
-        public ActionResult Index(client client, societe societe)
+        public ActionResult Index(client client, societe societe, String login, String password, string hwoIam)
         {
-            reservation res1 = new reservation();
-            try
-            { UpdateModel(res1); }
-            catch
-            {
-                ViewBag.erreur = "Verifier les champs !!!";
-                return View();
-            }
-            //return View();
-            db.reservations.Add(res1);
-            db.SaveChanges();
 
-            if ( societe.adresse != null )
+            if (Session["isconnect"] != null && (bool)Session["isconnect"] == true)
+            {
+                  ViewBag.Client = Session["Client"] ;
+            }
+            // verification des valeur de connection 
+            if (login != null)
+            {
+                // verification du type de compte avec la variable hwoIam
+                if (hwoIam != null && hwoIam.Equals("Client"))
+                {
+                    client cli = new client();
+                    // Recherche dans la table client 
+                    cli = db.clients.Where(c => c.login_client == login).FirstOrDefault();
+                   if (cli != null)
+                    {
+                        Session["isconnect"] = true;
+                        Session["Client"] = cli;
+                        ViewBag.Client = cli;
+                        Session["whoIam"] = 1; 
+                    }
+                    else {
+                        System.Diagnostics.Debug.WriteLine("Erreur ! indentifiant");
+                    }
+                }
+                else
+                {
+                    Session["whoIam"] = 2;
+                    societe soc = new societe();
+                    // Recherche dans la table client 
+                    soc = db.societes.Where(s => s.login_societe == login).FirstOrDefault();
+                    if (soc != null)
+                    {
+                        Session["isconnect"] = true;
+                        Session["Societe"] = soc;
+                        ViewBag.Societe = soc;
+                        Session["whoIam"] = 2;
+
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Erreur ! indentifiant");
+                    }
+
+                }
+            }
+
+            if (societe.login_societe != null)
             {
                 societe s = new societe();
                 try
@@ -60,10 +82,8 @@ namespace Projet_Transport.Controllers
                 {
                     Debug.WriteLine(e.Message);
                 }
-                return View("Index", new societe());
             }
-      
-            else if ( societe.adresse == null )
+            else if (client.login_client != null)
             {
 
                 client c = new client();
@@ -79,12 +99,30 @@ namespace Projet_Transport.Controllers
                 {
                     Debug.WriteLine(e.Message);
                 }
-                return View("Index", new client());
             }
             List<ville> listeVille = db.villes.ToList();
             @ViewBag.SlectedView = "Home";
             return View(listeVille);
         }
+
+        [Route("Rechercher")]
+        public ActionResult Rechercher(string ville_depart , string ville_arriver , DateTime date_depart , DateTime date_arriver)
+        {
+            if ( ville_depart != null &&  ville_arriver != null &&  date_depart != null &&  date_arriver != null)
+            {
+                List<trajet> listeTrajet =  db.trajets.Where(t => t.Date_depart <= date_depart && t.Date_arrive >= date_arriver && t.ville.nomVille == ville_depart && t.ville1.nomVille == ville_arriver).ToList();
+                ViewBag.Rechercher = listeTrajet;
+                if (listeTrajet.Count == 0)
+                {
+                    Session["NoOne"] = true;
+                }
+            }
+           
+            int id = 200;
+            return RedirectToAction("Index" , "offres");
+        }
+
+
         [Route("listres")]
         public ActionResult listres()
         {
@@ -94,7 +132,13 @@ namespace Projet_Transport.Controllers
             return View();
         }
 
-      
+        [Route("Deconnection")]
+        public ActionResult Deconnection()
+        {
+            Session.Clear();// vider la session
+            System.Diagnostics.Debug.WriteLine((Session["Client"] == null));
+            return View("Index");
+        }
 
     }
 }

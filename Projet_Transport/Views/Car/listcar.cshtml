@@ -1,41 +1,42 @@
 ﻿<h2>Liste des car</h2>
 
 
-
+@if (Session["Societe"] != null)
+{
 <table class="table">
     <tr>
         <th>Id</th>
         <th>Nombre de place</th>
         <th>Type de car</th>
-        <th>Decsription</th>
-        <th>hhhhh</th>
+        <th>Action</th>
+
+
     </tr>
 
-    @{ 
-        foreach (var carr in ViewBag.cars)
-        {
+    @foreach (var carr in ViewBag.cars)
+    {
 <tr>
     <td> @carr.id</td>
     <td> @carr.nbr_place</td>
     <td>@carr.type</td>
-    <td>@carr.description</td>
+
     <td>
         @Html.ActionLink("Supprimer", "deleteC", new { id = carr.id })
         @Html.ActionLink("Modifier", "editC", new { id = carr.id })
     </td>
 
 </tr>
- } }
-
-</table>
-<!-- Button trigger modal -->
-<!-- Modal -->
+       }
 
 
-      
+</table> <!-- Button trigger modal --> <!-- Modal --> }
+            else
+            {
+                <div class="row">
+                    Veillez vous connecter
+                </div>
+            }
+
+
 
 <button onclick="window.location.href = '/Car/AddCar';" type="submit" class="btn btn-secondary">Nouveau car </button>
-
-
-
-

@@ -14,12 +14,10 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/SocieteZ/img/favicon.png" rel="icon">
+    <link href="~/SocieteZ/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+    
     <!-- Vendor CSS Files -->
     <link href="~/SocieteZ/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/SocieteZ/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -45,18 +43,38 @@
             <nav class="nav-menu d-none d-lg-block">
 
                 <ul>
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="/Societe/listTrajet">Trajet</a></li>
-                    <li><a href="/Car/listcar">Car</a></li>
+                    <li><a href="/Home/Index">Accueil</a></li>
+                    @if (Session["whoIam"] != null)
+                    {
+                        if ((int)Session["whoIam"] == 2)
+                        {
+                            <li><a href="/Societe/listTrajet">Trajet</a></li>
+                            <li><a href="/Car/listcar">Car</a></li>
+                        }
+                        else if ((int)Session["whoIam"] == 1)
+                        {
+                            <li><a href="/offres/Index">Offre</a></li>
+                            <li><a href="/Societe/listTrajet">Mes reservtaion</a></li>
+
+                        }
+                    }
+                    else
+                    {
+                        <li><a href="/offres/Index">Offre</a></li>
+                    }
+
+
                     <li><a href="contact.html">Contact</a></li>
 
                 </ul>
 
             </nav><!-- .nav-menu -->
-
-            <a href="index.html" class="get-started-btn ml-auto">
-                Get Started
-            </a>
+            @if (Session["isconnect"] != null && (bool)Session["isconnect"] == true)
+            {
+                <a href="/Home/Deconnection" class="get-started-btn ml-auto">
+                    Se deconnecter
+                </a>
+            }
 
         </div>
     </header><!-- End Header -->

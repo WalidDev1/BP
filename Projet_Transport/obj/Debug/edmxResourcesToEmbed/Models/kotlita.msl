@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KotlitaModelStoreContainer" CdmEntityContainer="KotlitaEntities1">
+    <EntitySetMapping Name="cars">
+      <EntityTypeMapping TypeName="KotlitaModel.car">
+        <MappingFragment StoreEntitySet="car">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nbr_place" ColumnName="nbr_place" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_societe" ColumnName="id_societe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="KotlitaModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="tele" ColumnName="tele" />
+          <ScalarProperty Name="login_client" ColumnName="login_client" />
+          <ScalarProperty Name="mdp_client" ColumnName="mdp_client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservations">
+      <EntityTypeMapping TypeName="KotlitaModel.reservation">
+        <MappingFragment StoreEntitySet="reservation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date_reservation" ColumnName="date_reservation" />
+          <ScalarProperty Name="idClient" ColumnName="idClient" />
+          <ScalarProperty Name="idTrajet" ColumnName="idTrajet" />
+          <ScalarProperty Name="nbr" ColumnName="nbr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="societes">
+      <EntityTypeMapping TypeName="KotlitaModel.societe">
+        <MappingFragment StoreEntitySet="societe">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="tele" ColumnName="tele" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="login_societe" ColumnName="login_societe" />
+          <ScalarProperty Name="mdp_societe" ColumnName="mdp_societe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trajets">
+      <EntityTypeMapping TypeName="KotlitaModel.trajet">
+        <MappingFragment StoreEntitySet="trajet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_ville_depart" ColumnName="id_ville_depart" />
+          <ScalarProperty Name="id_ville_arrive" ColumnName="id_ville_arrive" />
+          <ScalarProperty Name="Date_depart" ColumnName="Date_depart" />
+          <ScalarProperty Name="Date_arrive" ColumnName="Date_arrive" />
+          <ScalarProperty Name="idCar" ColumnName="idCar" />
+          <ScalarProperty Name="prix" ColumnName="prix" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="villes">
+      <EntityTypeMapping TypeName="KotlitaModel.ville">
+        <MappingFragment StoreEntitySet="ville">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nomVille" ColumnName="nomVille" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -4,57 +4,87 @@
 
 
 </pre>
+@model List<Projet_Transport.Models.ville>
 <div class="container">
+    @if (Session["Societe"] != null)
+    {
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-3">
 
-    <form action="" method="post">
-        <div class="row">
+                </div>
+                <div class="col-6">
+                    <h1>Ajouter trajet</h1>
+
+                    <fieldset>
+
+
+
+                        <div class="form-group">
+                            <label>Date depart </label>
+                            @Html.TextBox("Date_depart", null, new { @Class = "form-control", Type = "datetime-local" })
+                        </div>
+                        <div class="form-group">
+                            <label>Date arrivee </label>
+                            @Html.TextBox("Date_arrive", null, new { @Class = "form-control", Type = "datetime-local" })
+                        </div>
+                        <div class="form-group">
+                            <label fo>prix </label>
+                            @Html.TextBox("prix", null, new { @Class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>ville_depart</label>
+                            <select name="id_ville_depart" class="form-control ">
+                                <option selected> </option>
+                                @if (ViewBag.listeville != null)
+                                {
+                                    foreach (var vil in ViewBag.listeville)
+                                    {
+                <option value="@vil.id">@vil.nomVille  </option>}
+                                }
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ville_arrivee</label>
+                            <select name="id_ville_arrive" class="form-control ">
+                                <option selected> </option>
+                                @if (ViewBag.listeville != null)
+                                {
+                                    foreach (var vil in ViewBag.listeville)
+                                    {
+                <option value="@vil.id">@vil.nomVille  </option>}
+                                }
+
+                            </select>
+                        </div>
+
+
+
+                    </fieldset>
+
+                    @if (Session["haveCar"] != null && (bool)Session["haveCar"] == true)
+                    {
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" name="lil" value="Ajouter" />
+                        </div>
+                        Session["haveCar"] = false;
+                    }
+
+
+                </div>
+            </div>
             <div class="col-3">
 
             </div>
-            <div class="col-6">
-                <h1>Ajouter trajet</h1>
-
-                <fieldset>
-
-
-                    <div class="form-group">
-                        <label for="nom">Ville depart</label>
-                        @Html.TextBox("Ville_depart", null, new { @Class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Ville Arrive</label>
-                        @Html.TextBox("Ville_arrive", null, new { @Class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Date depart </label>
-                        @Html.TextBox("Date_depart", null, new { @Class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Nbr heure </label>
-                        @Html.TextBox("Nbr_heure", null, new { @Class = "form-control" })
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="selection">Categorie</label>
-                        <select id="selection" class="form-control">
-                            <option value="">Categorie</option>
-                            <option value="">confort</option>
-                            <option value="">confort+</option>
-
-                        </select>
-                    </div>
-
-                </fieldset>
-
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" name="lil" value="Ajouter" />
-                </div>
-
-            </div>
+        </form>
+    }
+    else
+    {
+        <div class="row">
+            Veillez vous connecter
         </div>
-        <div class="col-3">
+    }
 
-        </div>
-    </form>
 </div>

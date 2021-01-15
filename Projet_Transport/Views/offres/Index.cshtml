@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<body>
+    <table class="table" style="margin-top: 75px;">
+        <tr>
+            <th>Id</th>
+            <th>Nombre de place</th>
+            <th>ville depart</th>
+            <th>ville arrive</th>
+            <th>date depart</th>
+            <th>date arrive</th>
+            <th>prix</th>
+        </tr>
+
+        @{
+            if (ViewBag.listeOffres != null)
+            {
+                foreach (Projet_Transport.Models.trajet item in ViewBag.listeOffres)
+                {
+                    <tr>
+                        <td> @item.id</td>
+                        <td> @*@item.car.nbr_place.ToString()*@ </td>
+                        <td>@item.ville.nomVille</td>
+                        <td>@item.ville1.nomVille</td>
+                        <td>@item.Date_depart </td>
+                        <td>@item.Date_arrive </td>
+                        <td>@item.prix.ToString() </td>
+                        <td>
+                            @{ var isfind = 0; }
+                            @if (Session["isconnect"] != null && (bool)Session["isconnect"] == true)
+                            {
+
+
+                                foreach (Projet_Transport.Models.reservation itemR in ViewBag.Reservation)
+                                {
+                                    if (itemR.idTrajet == item.id)
+                                    {
+                                        @Html.ActionLink("Annuler", "Annuler", new { id = item.id }, new { @class = "btn btn-danger" })
+                                        { isfind = 1; }
+                                    }
+
+                                }
+                                if (isfind == 0)
+                                {
+                                    @Html.ActionLink("Reserver", "Reserver", new { id = item.id }, new { @class = "btn btn-success" })
+                                }
+
+
+                            }
+                        </td>
+
+                    </tr>
+                }
+            }
+        }
+
+    </table>
+    @if(ViewBag.message != null)
+    {
+    <div class="row">
+        @ViewBag.message
+    </div>
+    }
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+
+
+
+
+
+</body>
+
+
+

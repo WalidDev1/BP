@@ -12,50 +12,62 @@ using Projet_Transport.Models;
 namespace Projet_Transport.Controllers
 {
     public class CarController : Controller
-        
-    {
 
-        TransportBDEntities3 db = new TransportBDEntities3();
+    {
+        TransportEntitieslast db = new TransportEntitieslast();
 
         [Route("AddCar")]
         public ActionResult AddCar(int z = 0)
         {
-
+            
 
             return View();
         }
-      
+
         [Route("AddCar")]
         [HttpPost]
         public ActionResult AddCar()
         {
 
-             car testcar = new car();
-                 try
+            car carXX = new car();
+            /* societe societexxx = new societe();
+             societexxx.nom = "zz";
+             societexxx.adresse = "aaa";
+             societexxx.login_societe = "aaaa";
+             societexxx.mdp_societe = "aaaa";
+
+
+             carXX.id_societe = societexxx.id;*/
+            try
             {
 
-                UpdateModel(testcar);
+                UpdateModel(carXX);
 
             }
             catch
             {
-                ViewBag.erreur = "Verifier les champs !!!";
+                ViewBag.erreur = "Verifier les champs ";
                 return View();
             }
 
-           
+
             //return View();
-            db.cars.Add(testcar);
+            db.cars.Add(carXX);
             db.SaveChanges();
             return RedirectToAction("listcar");
 
         }
-        
+
 
         public ActionResult listcar()
         {
-            var cars = db.cars.ToList();
-            ViewBag.cars = cars;
+            if (Session["Societe"] != null)
+            {
+                societe so = (societe)Session["Societe"];
+                var cars = db.cars.Where(c => c.id_societe == so.id).ToList();
+                ViewBag.cars = cars;
+            }
+           
 
             return View();
         }
@@ -63,10 +75,10 @@ namespace Projet_Transport.Controllers
         [Route("deleteC{id}")]
         public ActionResult deleteC(int id)
         {
-                car c = db.cars.Find(id);
-                db.cars.Remove(c);
-                db.SaveChanges();
-           
+            car c = db.cars.Find(id);
+            db.cars.Remove(c);
+            db.SaveChanges();
+
             return RedirectToAction("listcar");
         }
 
@@ -81,12 +93,15 @@ namespace Projet_Transport.Controllers
                 return RedirectToAction("listcar");
 
             }
+
             UpdateModel(cars);
             ViewBag.cars = cars;
-
             db.SaveChanges();
-            // db.trajets.Find(trajetx.id).SetType= trajets.GetType;
+            // return RedirectToAction("listcar");
+
+
             return View(cars);
+
         }
 
 

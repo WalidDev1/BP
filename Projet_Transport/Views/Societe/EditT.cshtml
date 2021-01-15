@@ -1,10 +1,7 @@
-﻿
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
-<h1> salam </h1>
+
 <!-- Begin Page Content -->
 <body class="bg-gradient-light">
     <div class="container">
@@ -17,32 +14,56 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Modifier car !</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Modifier trajet !</h1>
                             </div>
                             <form action="" method="post">
                                 <!-- calsse user badelha ² -->
+
                                 <div class="form-group">
-                                    <label>  Ville arrive</label>
-                                    @Html.TextBox("Ville_depart", null, new { @Class = "form-control" })
+                                    <label>Date depart </label>
+                                    @Html.TextBox("Date_depart", null, new { @Class = "form-control", Type = "datetime-local" })
                                 </div>
                                 <div class="form-group">
-                                    <label>  ville arrive</label>
-                                    @Html.TextBox("Ville_arrive", null, new { @Class = "form-control" })
+                                    <label>Date arrivee </label>
+                                    @Html.TextBox("Date_arrive", null, new { @Class = "form-control", Type = "datetime-local" })
                                 </div>
                                 <div class="form-group">
-                                    <label>  Date depart</label>
-                                    @Html.TextBox("Date_depart", null, new { @Class = "form-control" })
+                                    <label fo>prix </label>
+                                    @Html.TextBox("prix", null, new { @Class = "form-control" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label>ville_depart</label>
+                                    <select name="id_ville_depart" class="form-control ">
+                                        <option selected> @ViewBag.ville_depart</option>
+                                        @if (ViewBag.listeville != null)
+                                        {
+                                            foreach (var vil in ViewBag.listeville)
+                                            {
+                            <option value="@vil.id">@vil.nomVille  </option>}
+                                        }
+
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>  Nbr_place </label>
-                                    @Html.TextBox("Nbr_heure", null, new { @Class = "form-control" })
+                                    <label>ville_arrivee</label>
+                                    <select name="id_ville_arrive" class="form-control ">
+                                        <option selected> @ViewBag.ville_arrive </option>
+                                        @if (ViewBag.listeville != null)
+                                        {
+                                            foreach (var vil in ViewBag.listeville)
+                                            {
+                            <option value="@vil.id">@vil.nomVille  </option>}
+                                        }
+
+                                    </select>
                                 </div>
-                                <dwiv class="form-group ">
 
 
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" name="lil" value="Modifier" />
-                                    </div>
+
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" name="lil" value="Modifier" />
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -53,4 +74,3 @@
 </body>
 
 }
-

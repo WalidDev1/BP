@@ -14,7 +14,7 @@ namespace Projet_Transport.Controllers
 {
     public class reservationsController : Controller
     {
-        private Projet_TransportContext db = new Projet_TransportContext();
+        private TransportEntitieslast db = new TransportEntitieslast();
 
         // GET: reservations
         public async Task<ActionResult> Index()
